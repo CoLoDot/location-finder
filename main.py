@@ -3,7 +3,7 @@ import requests
 import logging
 from utils.constants import MAITRON_BASE_URL
 from utils.helpers import is_valid_article
-from utils.scrapper import scrape
+from utils.scrapper import scrape_article, scrape_urls
 from utils.semantizer import semantize
 from utils.locator import locate
 from utils.injector import inject
@@ -13,28 +13,26 @@ logging.basicConfig(level=logging.INFO)
 
 
 def main():
-    max_maitron_article_id = input(
-        "Maximum iterations: ")
+    max_iterations = input(
+        "Maximum articles: ")
 
-    min_maitron_article_id = 540
-    for article_id in range(0, int(max_maitron_article_id)):
-        article = requests.get(
-            MAITRON_BASE_URL + str(min_maitron_article_id + article_id))
+    article_urls = scrape_urls(int(max_iterations))
+
+    for article_url_id in range(0, len(article_urls)):
+        article = requests.get(article_urls[article_url_id])
         is_valid = is_valid_article(article.status_code, article.text)
-
-        logging.info(' ID %s is valid : %s', str(
-            min_maitron_article_id + article_id), is_valid)
+        logging.info(' URL %s is valid : %s',
+                     article_urls[article_url_id], is_valid)
 
         if is_valid:
-            scrapped_article = scrape(article.text)
+            scrapped_article = scrape_article(article.text)
             semantized_locations = semantize(scrapped_article)
             locations_coordonnates = locate(semantized_locations)
             data = scrapped_article
             data['locations'] = locations_coordonnates
-            inject(data)
+            inject(data, article_urls[article_url_id])
 
-        if article_id == int(max_maitron_article_id):
-            break
+    logging.info(' Process finished')
 
 
 if __name__ == '__main__':

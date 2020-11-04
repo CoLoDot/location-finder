@@ -12,10 +12,18 @@ logging.basicConfig(level=logging.INFO)
 shot_40_44 = (
     "CREATE TABLE `shot_40_44` ("
     "  `id` int(11) NOT NULL AUTO_INCREMENT,"
-    "  `name` varchar(60),"
-    "  `birth_place` varchar(60),"
-    "  `death_place` varchar(60),"
+    "  `first_name` varchar(100),"
+    "  `last_name` varchar(100),"
+    "  `surname` varchar(100),"
+    "  `birth_place` varchar(100),"
+    "  `birth_place_coord` varchar(100),"
+    "  `birth_place_country` varchar(100),"
+    "  `birth_date` varchar(100),"
+    "  `death_place` varchar(100),"
+    "  `death_place_coord` varchar(100),"
+    "  `death_date` varchar(100),"
     "  `locations` varchar(1000),"
+    "  `maitron_url` varchar(1000),"
     "  PRIMARY KEY (`id`)"
     ") ENGINE=InnoDB")
 

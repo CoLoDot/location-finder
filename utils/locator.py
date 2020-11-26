@@ -34,6 +34,7 @@ def locate(city: str) -> dict:
                 time.sleep(1)
                 _location = geolocator.geocode(query_item, addressdetails=True)
                 if _location:
+                    time.sleep(1)
                     _country = geolocator.reverse(
                         [_location.latitude, _location.longitude], language='fr')
                     coordonates['location'] = str(_location)

@@ -4,4 +4,5 @@ BIRTH_STOP_WORDS = ["naître"]
 DEATH_STOP_WORDS = ["massacrer", "mourir",
                     "exécuter", "tuer", "fusiller", "mort", "abattre", "assassiner", "décéder", "disparaître"]
 SURNAME_STOP_WORDS = ["dire", "pseudonyme"]
-LOCATE_STOP_WORDS = ["département", "région", "empire", "de"]
+LOCATE_STOP_WORDS = ["département", "région", "empire",
+                     "de", "hôpital", "Hôpital", "hopital", "Hopital"]

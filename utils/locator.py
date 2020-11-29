@@ -14,11 +14,11 @@ def locate(city: str) -> dict:
     }
     try:
         time.sleep(1)
-        location = geolocator.geocode(city, addressdetails=True)
+        location = geolocator.geocode(city, timeout=5, addressdetails=True)
         if location:
             time.sleep(1)
             country = geolocator.reverse(
-                [location.latitude, location.longitude], language='fr')
+                [location.latitude, location.longitude], timeout=5, language='fr')
             coordonates['location'] = str(location)
             coordonates['lat'] = str(location.latitude)
             coordonates["long"] = str(location.longitude)
@@ -32,11 +32,12 @@ def locate(city: str) -> dict:
             city_query = [i for i in _city if not i in LOCATE_STOP_WORDS]
             for query_item in city_query:
                 time.sleep(1)
-                _location = geolocator.geocode(query_item, addressdetails=True)
+                _location = geolocator.geocode(
+                    query_item, timeout=5, addressdetails=True)
                 if _location:
                     time.sleep(1)
                     _country = geolocator.reverse(
-                        [_location.latitude, _location.longitude], language='fr')
+                        [_location.latitude, _location.longitude], timeout=5, language='fr')
                     coordonates['location'] = str(_location)
                     coordonates['lat'] = str(_location.latitude)
                     coordonates["long"] = str(_location.longitude)
@@ -46,6 +47,7 @@ def locate(city: str) -> dict:
                         pass
                     break
     except:
+        print('Exception raised : unknown')
         pass
 
     return coordonates

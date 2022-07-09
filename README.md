@@ -17,10 +17,6 @@ source env/bin/activate
 #### Install requirements
 ```
 pip install -r requirements.txt
-python -m spacy download fr_core_news_sm
-
-pip install --no-cache-dir spacy
-```
 
 #### SetUp .env
 ```
@@ -38,4 +34,3 @@ Copy & past .env.sample in your .env and add your config keys
 cd location-finder
 python main.py
 ```
-

@@ -19,7 +19,7 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
-#### SetUp .env
+#### SetUp .envclear
 ```
 touch .env
 ```

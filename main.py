@@ -1,4 +1,3 @@
-#! /usr/bin/env python
 import requests
 import logging
 import json
@@ -23,7 +22,7 @@ def main():
     min_iterations = input(
         "Min article idx: ")
     max_iterations = input(
-        "Max article idx (max value 25866 ): ")
+        "Max article idx: ")
 
     urls = []
     if enable_urls_scrapping == 'Y':

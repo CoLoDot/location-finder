@@ -18,6 +18,8 @@ source env/bin/activate
 ```
 pip install -r requirements.txt
 python -m spacy download fr_core_news_sm
+
+pip install --no-cache-dir spacy
 ```
 
 #### SetUp .env

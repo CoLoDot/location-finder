@@ -17,6 +17,7 @@ source env/bin/activate
 #### Install requirements
 ```
 pip install -r requirements.txt
+```
 
 #### SetUp .env
 ```
